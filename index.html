@@ -23,14 +23,6 @@
         <section class="boxes">
             <div class="grid-container">
                 <div class="grid-item">
-                    <label id="temperature">TEMPERATURE</label>
-                    <br>
-                    <button onclick="getCurrentTemp()"> Get Current Temperature</button>
-                    <br><br><br><br><br><br><br>
-                    <button onclick="increaseTemp()">Increase Temperature</button>
-                    <button onclick="decreaseTemp()">Decrease Temperature</button>
-                </div>
-                <div class="grid-item">
                     <label for="cityid">CITY</label>
                     <br>
                     <input type="text" placeholder="Enter a City" id="cityid">
@@ -38,10 +30,25 @@
                     <button onclick="resetCity()"> Reset City </button>
                 </div>
                 <div class="grid-item">
-                    <label for="day-of-year">DAY</label>
+                    <h3 class="h3">Current Temperature</h3>
+                    <h3 class="current-temp" name="Current Temperature" ></h3>
+                    <button type="button" id="sub">-</button>
+	                <input type="text" name="Current Temperature" id="TempPlaceholder">70&deg;F</h3>
+                    <!-- id="qtyBox" readonly="" value="0"> -->
+	                <button type="button" id="add">+</button>
+
+                <!-- </div> -->
+                <!-- <div class="form-block center-block p-30 light-gray-bg border-clear"> -->
+                    <!-- <h3 class="set-temp">Set Temperature</h3>
+                    <h5><span id="amountSpan">70&deg;F</span></h5> 
+                    <button id="inc" type="Button" class="btn btn-danger"><i class="fa fa-angle-up"></i>+</button>
+                    <button id="dec" type="Button" class="btn btn-primary"><i class="fa fa-angle-down"></i>-</button> -->
+                    <!-- <label id="temperature">TEMPERATURE</label>
                     <br>
-                    <input type="text" placeholder="What day?" id="dayofyear">
-                    <br>
+                    <button onclick="getCurrentTemp()"> Get Current Temperature</button>
+                    <br><br><br><br><br><br><br>
+                    <button onclick="increaseTemp()">Increase Temperature</button>
+                    <button onclick="decreaseTemp()">Decrease Temperature</button> -->
                 </div>
                 <div class="grid-item">
                     <label id="sky">SKY</label>
@@ -59,7 +66,15 @@
         <footer>
             <small>&copy; Copyright  2022, Mitra Maghsoudloo | Lulu Sun </small>
         </footer>
+
         <script src="./src/index.js" type="text/javascript"></script>
         <script src="./node_modules/axios/dist/axios.min.js"></script>
+        <script>
+            // wave 2 button increase temp
+            var temp = 70; // use API call to get the real temp
+            function updateTemp() {                
+                document.getElementById("TempPlaceholder").innerHTML = temp;
+            }
+        </script>
     </body>
     </html>
