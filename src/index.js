@@ -47,31 +47,30 @@ const cityID = document.getElementById('cityid');
 const dispalyName = document.getElementById('display-name');
 const displaySky = document.getElementById('display-sky');
 const skyType = document.getElementById('skytype');
-
+const reset = document.getElementById('reset');
+const defaultCity = 'Seattle';
 const updateCity = () => {
   dispalyName.textContent = cityID.value;
 };
 
 const resetCity = () => {
   cityID.value = '';
-  state.city = 'Seattle';
-  dispalyName.textContent = state.city;
-  getCurrentTemp();
+  dispalyName.textContent = defaultCity;
 };
 
 const changeSky = (e) => {
   const skyType = e.target.value;
   if (skyType == 'cloudy') {
-    displaySky.textContent = '☁️';
+    displaySky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
   }
   if (skyType == 'rainy') {
-    displaySky.textContent = '☔️';
+    displaySky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
   }
   if (skyType == 'snowy') {
-    displaySky.textContent = '❄️';
+    displaySky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
   }
   if (skyType == 'sunny') {
-    displaySky.textContent = '☀️';
+    displaySky.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
   }
 };
 
@@ -79,6 +78,8 @@ const registerEventHandlers = () => {
   cityID.addEventListener('input', updateCity);
 
   skyType.addEventListener('change', changeSky);
+
+  reset.addEventListener('click', resetCity);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
