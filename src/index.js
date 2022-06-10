@@ -46,6 +46,10 @@ const changeColorAndLandscapeBasedOnTemp = () => {
 
 }
 }
+
+
+
+
 const registerEventHandlers = () => {
   const increaseTemperature = document.querySelector("#add");
   increaseTemperature.addEventListener("click", addBtn);

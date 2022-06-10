@@ -41,16 +41,17 @@ header {
     margin-right: 2rem;
 }
 .boxes2 {
-    display: grid;
+    display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: 1em;
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 500px 500px 500px;
+    grid-template-columns: 300px 300px 300px;
     grid-template-rows: 3fr 1fr;
     color: black;
-    grid-gap: 3px;
+    grid-gap: 50px;
     justify-items: center;
     align-items: center;
     margin-left: 2rem;
@@ -65,8 +66,8 @@ header {
     text-align: center;
     padding: 10px;
     font-size: 25px;
-    width: 400px;
-    height: 400px;
+    width: 250px;
+    height: 250px;
 }
 .grid-item-1 {
     background-color: rgba(98, 129, 117, 0.8);
@@ -76,8 +77,8 @@ header {
     padding: 50px;
     margin-left: 2rem;
     font-size: 25px;
-    width: 1600px;
-    height: 400px;
+    width: 800px;
+    height: 250px;
 }
 footer {
     color: rgb(255, 255, 255);
@@ -85,15 +86,15 @@ footer {
     font-size: larger;
     text-align: center;
     position:relative;
-    margin-left: 10rem;
     bottom: 0;
 }
+
 button {
 	width: 40px;
 	height: 40px;
 	font-size: 2em;
 	line-height: 30px;
-    text-align:justify;
+    text-align:center;
 	border-radius: 10px;
 	outline: none;
 	border: none;
@@ -143,12 +144,13 @@ input{
     font-family:  Tahoma;
 }
 #realtime-temp {
-    font-size: .8em;
+    font-size: .6em;
     text-align: center;
     width: fit-content;
+    height: fit-content;
 
 }
 #landscape-container {
-    font-size: 2em;
-    margin-top: 4em;
+    font-size: 1.2em;
+    margin-top: 2.8em;
 }
