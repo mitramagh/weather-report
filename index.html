@@ -25,9 +25,10 @@
                 <div class="grid-item">
                     <label for="cityid">CITY</label>
                     <br>
+                    <p id="display-name">=City name to be replaced=</p>
                     <input type="text" placeholder="Enter a City" id="cityid">
                     <br>
-                    <button onclick="resetCity()"> Reset City </button>
+                    <button id="reset" onclick="resetCity()"> Reset </button>
                 </div>
                 <div class="grid-item">
                     <h3 class="h3">Current Temperature</h3>
@@ -60,13 +61,15 @@
                         <option value="snowy">Snowy</option>
                         <option value="sunny">Sunny</option>
                     </select>
+                    <br>
+                    <p id="display-sky">  </p>
                 </div>
             </div>
         </section>
         <footer>
             <small>&copy; Copyright  2022, Mitra Maghsoudloo | Lulu Sun </small>
         </footer>
-
+        
         <script src="./src/index.js" type="text/javascript"></script>
         <script src="./node_modules/axios/dist/axios.min.js"></script>
         <script>
