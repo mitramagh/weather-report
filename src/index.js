@@ -2,48 +2,57 @@
 
 
 
+const state = {
+  city: "Seattle",
+  temperature: 65
+};
 
-let addBtn = document.querySelector('#add');
-let subBtn = document.querySelector('#sub');
-let qty = document.querySelector('#qtyBox');
+const addBtn = () => {
+  state.temperature += 1;
+  console.log(state);
+  const currentTemperature = document.querySelector("#amountSpan");
+  currentTemperature.textContent = `${state.temperature} ℉`;
+};
 
-addBtn.addEventListener('click',()=>{
-  qty.value = parseInt(qty.value) + 1;
-});
+const subBtn = () => {
+  state.temperature -=1;
+  const currentTemperature = document.querySelector("#amountSpan");
+  currentTemperature.textContent = `${state.temperature} ℉`;
+};
 
-subBtn.addEventListener('click',()=>{
-  if (qty.value <= 0) {
-    qty.value = 0;
-  }
-  else{
-    qty.value = parseInt(qty.value) - 1;
-  }
-});
+const changeColorAndLandscapeBasedOnTemp = () => {
+  let tempColor = document.getElementById('amountSpan')
+  console.log(tempColor);
+  let landscape = document.querySelector('#landscape-container');
+  if (state.temperature >= 80) {
+    tempColor.className = 'red';
+    landscape.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂🍳';
 
+  } else if (state.temperature >= 70 && state.temperature < 80) {
+    tempColor.className = 'orange';
+    landscape.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
 
-const getCurrentTemp = () => {
-  const currentTemp = new Temp??();
-  return currentTemp;
+  } else if (state.temperature >= 60 && state.temperature < 70) {
+    tempColor.className = 'yellow';
+    landscape.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+
+  } else if (state.temperature >= 50 && state.temperature < 60) {
+    tempColor.className = 'green';
+    landscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+
+  }else if (state.temperature < 50) {
+    tempColor.className = 'teal';
+    landscape.textContent = '⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️';
+
 }
-
-
-const increaseTemperature = () => {
-  const newTemperature = temperatureValue + 1;
-  setTemperatureValue(newTemperature);
-  if (newTemperature >= 76) {
-    setTemperatureColor('hot');
-  }
+}
+const registerEventHandlers = () => {
+  const increaseTemperature = document.querySelector("#add");
+  increaseTemperature.addEventListener("click", addBtn);
+  increaseTemperature.addEventListener("click", changeColorAndLandscapeBasedOnTemp);
+  const decreaseTemperature = document.querySelector("#sub");
+  decreaseTemperature.addEventListener("click", subBtn);
+  decreaseTemperature.addEventListener("click", changeColorAndLandscapeBasedOnTemp);
 };
 
-const decreaseTemperature = () => {
-  const newTemperature = temperatureValue - 1;
-  setTemperatureValue(newTemperature);
-  if (newTemperature < 65) {
-    setTemperatureColor('cold');
-  }
-};
-
-var temp = 70; // use API call to get the real temp
-            function updateTemp() {                
-                document.getElementById("TempPlaceholder").innerHTML = temp;
-            }
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
