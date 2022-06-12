@@ -30,7 +30,6 @@ const subBtn = () => {
 
 const changeColorAndLandscapeBasedOnTemp = () => {
   let tempColor = document.getElementById('amountSpan');
-  console.log(tempColor);
   let landscape = document.querySelector('#landscape-container');
   if (state.temperature >= 80) {
     tempColor.className = 'red';
@@ -89,12 +88,6 @@ const getWeather = () => {
     });
 };
 
-//       req .then((response) => {
-//           console.log(response.data.lat, response.data.lon)
-//       })
-//       .catch ((error) => {
-//           console.log(error.response.statusText)
-//       })
 
 const updateCity = () => {
   displayName.textContent = cityID.value;
