@@ -12,12 +12,13 @@
         <header>
             <div class="text">
                 <h1>Weather Report </h1>
-                <h2 id="cityQuote"> <span id="display-name">Seattle</span>! This City has one Season: Rain! </h2>
+                <h2 id="cityQuote"> Weather report for the city of: <span id="display-name"> ... </span> </h2>
             </div>
         </header>
         <section class="boxes2">
             <div class="grid-item-1">
                 <label for="weathergarden">WEATHER GARDEN</label>
+                <p id="display-sky">  </p>
                 <section id="landscape-container">🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃</section>
             </div>
         </section>
@@ -28,18 +29,18 @@
                     <br>
                     <input type="text" placeholder="Enter a City" id="cityid">
                     <br>
-                    <button id="reset" onclick="resetCity()"> Reset </button>
+                    <button id="realtime-temp">Get Realtime Temperature</button>
+                    <button id="reset"> Reset City </button>
                 </div>
                 <div class="grid-item">
+                    <label for="cityid">TEMPERATURE</label>
                     <section class="temp-container">
                         <!-- <h3>Set Temperature</h3> -->
                         <button id="sub">-</button>
-                        <span id="amountSpan" class="yellow">65&deg;F</span> 
+                        <span id="amountSpan" class="yellow">65 ℉</span> 
                         <button id="add">+</button>
                     </section>
-                    <div>
-                        <button id="realtime-temp">Get Realtime Temperature</button>
-                    </div>
+                    
                     
                 
                 </div>
@@ -53,8 +54,6 @@
                         <option value="snowy">Snowy</option>
                         <option value="sunny">Sunny</option>
                     </select>
-                    <br>
-                    <p id="display-sky">  </p>
                 </div>
             </div>
         </section>

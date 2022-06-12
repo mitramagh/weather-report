@@ -5,11 +5,14 @@ const displayName = document.getElementById('display-name');
 const displaySky = document.getElementById('display-sky');
 const skyType = document.getElementById('skytype');
 const reset = document.getElementById('reset');
-const defaultCity = 'Seattle';
+const defaultCity = '...';
+const defaultTemp = '65 ℉';
+const tempBtn = document.getElementById('realtime-temp');
+let temperature = document.getElementById('amountSpan');
 
-const state = {
-  city: 'Seattle',
-  temperature: 0
+let state = {
+  city: '',
+  temperature: 65,
 };
 
 const addBtn = () => {
@@ -44,50 +47,54 @@ const changeColorAndLandscapeBasedOnTemp = () => {
   } else if (state.temperature < 50) {
     tempColor.className = 'teal';
     landscape.textContent = '⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️';
-}
+  }
 };
 
-let lat = 0;
-let lon = 0;
+let lat;
+let lon;
 const getLocation = () => {
-  axios.get('http://localhost:5000/location', {params:{ 'q':displayName.textContent}})
-  .then((response) => {
+  axios
+    .get('http://localhost:5000/location', {
+      params: { q: displayName.textContent },
+    })
+    .then((response) => {
       console.log(response);
-      lat =response.data[0].lat;
-      lon =response.data[0].lon;
-      
-      console.log("Location: ", displayName.textContent);
-      // getWeather();
+      lat = response.data[0].lat;
+      lon = response.data[0].lon;
+      state.city = displayName.textContent;
+      getWeather(lat, lon);
+      console.log('Location: ', displayName.textContent);
       console.log(lat, lon);
-  }).catch((error) => {
+    })
+    .catch((error) => {
       console.log(error);
-  })
-}
+    });
+};
 
+const getWeather = () => {
+  axios
+    .get('http://localhost:5000/weather', { params: { lat: lat, lon: lon } })
+    .then((response) => {
+      console.log(response);
+      const kelvin = response.data.current.temp;
+      const fahrenheit = Math.floor(((kelvin - 273.15) * 9) / 5 + 32);
+      temperature.textContent = `${fahrenheit} ℉`;
+      changeColorAndLandscapeBasedOnTemp();
+      console.log(`Temp in fahrenheit: ${fahrenheit}`);
 
-const requsetWeatherData = () => {
-  axios.get('http://localhost:5000/weather', {params:{'lat':lat , 'lon':lon }})
-      .then((response) => {
-          console.log(response);
-          const kelvin= response.data.current.temp;
-          // (0K − 273.15) × 9/5 + 32 = -459.7°F
-          state.temperature = (kelvin - 273.15) * 9/5 + 32;
-      }).catch((error) => {
-          console.log(error);
-        })
-  }
-      
-      
+      state.temperature = fahrenheit;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 //       req .then((response) => {
 //           console.log(response.data.lat, response.data.lon)
 //       })
 //       .catch ((error) => {
 //           console.log(error.response.statusText)
 //       })
-  
-
-
-
 
 const updateCity = () => {
   displayName.textContent = cityID.value;
@@ -96,6 +103,7 @@ const updateCity = () => {
 const resetCity = () => {
   cityID.value = '';
   displayName.textContent = defaultCity;
+  temperature.textContent = defaultTemp;
 };
 
 const changeSky = (e) => {
@@ -114,6 +122,12 @@ const changeSky = (e) => {
   }
 };
 
+const updateTemp = () => {
+  getLocation();
+  console.log('after getLocation()');
+  changeColorAndLandscapeBasedOnTemp();
+};
+
 const registerEventHandlers = () => {
   const increaseTemperature = document.querySelector('#add');
   increaseTemperature.addEventListener('click', addBtn);
@@ -127,12 +141,12 @@ const registerEventHandlers = () => {
     'click',
     changeColorAndLandscapeBasedOnTemp
   );
+
   cityID.addEventListener('input', updateCity);
 
   skyType.addEventListener('change', changeSky);
 
   reset.addEventListener('click', resetCity);
-  getLocation();
-  requsetWeatherData();
+  tempBtn.addEventListener('click', updateTemp);
 };
 document.addEventListener('DOMContentLoaded', registerEventHandlers);

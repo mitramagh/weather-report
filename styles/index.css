@@ -104,16 +104,18 @@ button {
 	box-shadow: inset -2px -2px 2px rgba(255,255,255,.2),
 				inset 2px 5px 15px rgba(0,0,0,.5);
 }
+
 button:active{
 	box-shadow: inset 2px 2px 2px rgba(255,255,255,.1),
 				inset -2px -5px 15px rgba(0,0,0,.5);
 }
+
 input{
 	border-radius: 10px;
 	outline: none;
 	border: none;
-	padding: 15px 0;
-	width: 150px;
+	padding: 10px 0;
+	width: fit-content;
 	text-align: center;
 	font-size: 20px;
 	color: #fff;
@@ -121,23 +123,8 @@ input{
 	background: transparent;
 	box-shadow: inset -2px -2px 2px rgba(255,255,255,.2),
 				inset 2px 5px 15px rgba(0,0,0,.5);
-
 }
 
-#reset {
-    width: 100px;
-	height: 60px;
-	font-size: 20px;
-	line-height: 30px;
-	border-radius: 10px;
-	outline: none;
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	background: transparent;
-	box-shadow: inset -2px -2px 2px rgba(255,255,255,.2),
-				inset 2px 5px 15px rgba(0,0,0,.5);
-}
 .yellow {
     color:yellow
 }
@@ -153,10 +140,12 @@ input{
 .teal {
     color:teal;
 }
+
 #amountspan {
     font-size: medium;
     font-family:  Tahoma;
 }
+
 #realtime-temp {
     font-size: .6em;
     text-align: center;
@@ -164,6 +153,14 @@ input{
     height: fit-content;
 
 }
+
+#reset {
+    font-size: .6em;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+
 #landscape-container {
     font-size: 1.2em;
     margin-top: 2.8em;
