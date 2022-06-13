@@ -13,8 +13,42 @@ const convertKtoF = (temp) => {
   return (temp - 273.15) * (9 / 5) + 32;
 };
 
+<<<<<<< HEAD
 const findLatAndLong = () => {
   //let lat, long;
+=======
+const subBtn = () => {
+  state.temperature -= 1;
+  const currentTemperature = document.querySelector('#amountSpan');
+  currentTemperature.textContent = `${state.temperature} ℉`;
+};
+
+const changeColorAndLandscapeBasedOnTemp = () => {
+  let tempColor = document.getElementById('amountSpan');
+  console.log(tempColor);
+  let landscape = document.querySelector('#landscape-container');
+  if (state.temperature >= 80) {
+    tempColor.className = 'red';
+    landscape.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂🍳';
+  } else if (state.temperature >= 70 && state.temperature < 80) {
+    tempColor.className = 'orange';
+    landscape.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
+  } else if (state.temperature >= 60 && state.temperature < 70) {
+    tempColor.className = 'yellow';
+    landscape.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+  } else if (state.temperature >= 50 && state.temperature < 60) {
+    tempColor.className = 'green';
+    landscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+  } else if (state.temperature < 50) {
+    tempColor.className = 'teal';
+    landscape.textContent = '⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️⛄️';
+  }
+};
+
+let lat;
+let lon;
+const getLocation = () => {
+>>>>>>> parent of a0724c7 (updated css)
   axios
     .get('https://weather-report-proxy-server.herokuapp.com/location', {
       params: {
@@ -50,6 +84,7 @@ const getWeather = () => {
     });
 };
 
+<<<<<<< HEAD
 const updateSky = () => {
   const inputSky = document.getElementById('skySelect').value;
   const skyContainer = document.getElementById('sky');
@@ -71,6 +106,17 @@ const updateSky = () => {
   skyContainer.textContent = sky;
   const gardenContent = document.getElementById('gardenContent');
   gardenContent.classList = `garden__content ${skyColor}`;
+=======
+//       req .then((response) => {
+//           console.log(response.data.lat, response.data.lon)
+//       })
+//       .catch ((error) => {
+//           console.log(error.response.statusText)
+//       })
+
+const updateCity = () => {
+  displayName.textContent = cityID.value;
+>>>>>>> parent of a0724c7 (updated css)
 };
 
 const updateCityName = () => {
