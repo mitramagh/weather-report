@@ -1,4 +1,6 @@
 'use strict';
+import 'regenerator-runtime/runtime';
+import axios from 'axios';
 
 const cityID = document.getElementById('cityid');
 const displayName = document.getElementById('display-name');
@@ -87,7 +89,6 @@ const getWeather = () => {
       console.log(error);
     });
 };
-
 
 const updateCity = () => {
   displayName.textContent = cityID.value;
